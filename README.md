@@ -1,11 +1,5 @@
 # Weather Dashboard
-
-* [Github]()
-* [Github IO]()
-* [Webpage Demo]()
-
-![Weather-Dashboard Demo]()
-
+![Demo](./assets/images/Demo.PNG)
 ### Description
 * Javascript, HTML & CSS documents to create a user enabled weather dashboard
 * Application utilizes OpenWeather One Call API & JQuery to enable dynamic changes to an HTML document
@@ -17,4 +11,4 @@
 * Five day forecast
 
 ### Authors
-* **Tyler Oates** - [Github Portfolio]()
+* **Tyler Oates** - [Github Portfolio](https://github.com/Atlas548)
