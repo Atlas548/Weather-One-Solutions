@@ -24,10 +24,10 @@
     <div class="col-6-md-4 card-body">
         <div class="row">
             <h2 class="card-body">Search City</h2>
-            <form id="searchcityform">
+            <form id="searchcityform" onsubmit="return false">
                 <div class="input-group col-sm-7">
-                    <input type="text" class="form-control" id="search" placeholder="Enter City Name">
-                    <button onclick="appendSearch()" class="btn btn-lg btn-primary" id="submit">Submit</button>
+                    <input type="text" class="form-control" id="searchcityinput" placeholder="Enter City Name">
+                    <button type="submit" class="btn btn-lg btn-primary" id="submit">Submit</button>
                     <!-- <button value="append" id="append" onclick="appendSearch()"></button> -->
                 </div>
             </form>
