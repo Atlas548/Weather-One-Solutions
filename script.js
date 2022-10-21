@@ -8,8 +8,7 @@ var searchCityForm = document.querySelector('#searchcityform');
 var searchCityInput = document.querySelector('#searchcityinput');
  
 function dailyForcastRender() {
-    console.log(city);
-    console.log(data.timezone);
+
 }
 
 function fiveDayForecastRender() {
@@ -17,8 +16,8 @@ function fiveDayForecastRender() {
 }
 
 // Function to pass specific parameters to dailyForcastrender function & fiveDayForcastrender function 
-function renderWeatherInfo(data, city) {
-    dailyForcastRender(city, data.timezone, data.current);
+function renderWeatherInfo(data) {
+    dailyForcastRender(data.timezone, data.current);
     fiveDayForecastRender(data.daily, data.timezone);
 }
 
@@ -54,23 +53,10 @@ function fetchWeather (data) {
     fetch(apiLink)
         .then(Response => Response.json())
         .then(data => {
-            renderWeatherInfo(data, city);
-            console.log(city);
+            renderWeatherInfo(data);
             console.log(data);
         })
 }
 
 searchCityForm.addEventListener('submit', searchFormSubmit)
-
-// function locationTest() {
-//     if(navigator.geolocation) {
-//         navigator.geolocation.getCurrentPosition(location => {
-//             lat = location.coords.latitude;
-//             lon = location.coords.longitude;
-//             console.log(lat, lon)
-//         })
-//     }
-// };
-
-// locationTest();
 
