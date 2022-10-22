@@ -3,30 +3,34 @@ var userLocation = document.querySelector('#location');
 var todayTemp = document.querySelector('#today-temp');
 var todayWind = document.querySelector('#today-wind');
 var todayHumidity = document.querySelector('#today-humidity');
-var todayUvindex = document.querySelector('#today-uvindex');
 var searchCityForm = document.querySelector('#searchcityform');
 var searchCityInput = document.querySelector('#searchcityinput');
+var todayIcon = document.querySelector('#today-icon');
  
-function dailyForcastRender() {
-
+// Renders the daily forecast using the data parameter 
+function dailyForcastRender(data) {
+    var tempValue = data['main']['temp'];
+    var locationValue = data['name'];
+    var weatherIconToday = data['weather']['0']['icon'];
+    var windValue = data['wind']['speed'];
+    var humidityValue = data['main']['humidity'];   
+    todayTemp.textContent = `Current Temp: ${tempValue} °F`;
+    userLocation.textContent = `${locationValue}`;
+    todayIcon.src = `http://openweathermap.org/img/wn/${weatherIconToday}@4x.png`;
+    todayWind.textContent = `Wind: ${windValue} MPH`;
+    todayHumidity.textContent = `Humidity: ${humidityValue}%`;
 }
 
-function fiveDayForecastRender() {
+// function fiveDayForecastRender() {
 
-}
+// }
 
-// Function to pass specific parameters to dailyForcastrender function & fiveDayForcastrender function 
-function renderWeatherInfo(data) {
-    dailyForcastRender(data.timezone, data.current);
-    fiveDayForecastRender(data.daily, data.timezone);
-}
 
 // Converts the input value from the user searching to a string value.
 function searchFormSubmit() {
     var searchCity = searchCityInput.value.trim();
     fetchCityCoords(searchCity);
     searchCity.value = '';
-    console.log(searchCity);
 }
 
 // Fetches the weather location IE lat & Lon and is used as parameters for fetchWeather function
@@ -46,17 +50,12 @@ function fetchWeather (data) {
     var lat = data ['0']['lat'];
     var lon = data ['0']['lon'];
     var apiLink = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&metric&appid=eecc46db8fa2385bac54dd8f8c273033&units=imperial`;
-    console.log(apiLink);
-    console.log(lat);
-    console.log(lon);
-
     fetch(apiLink)
         .then(Response => Response.json())
         .then(data => {
-            renderWeatherInfo(data);
+            dailyForcastRender(data);
             console.log(data);
         })
 }
 
 searchCityForm.addEventListener('submit', searchFormSubmit)
-
