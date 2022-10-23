@@ -6,7 +6,9 @@ var todayHumidity = document.querySelector('#today-humidity');
 var searchCityForm = document.querySelector('#searchcityform');
 var searchCityInput = document.querySelector('#searchcityinput');
 var todayIcon = document.querySelector('#today-icon');
- 
+
+
+
 // Renders the daily forecast using the data parameter 
 function dailyForcastRender(data) {
     var tempValue = data['main']['temp'];
@@ -21,9 +23,14 @@ function dailyForcastRender(data) {
     todayHumidity.textContent = `Humidity: ${humidityValue}%`;
 }
 
-// function fiveDayForecastRender() {
+function fiveDayForecastRender(data) {
+    var dateOne = data['list']['1']['dt_txt'];
 
-// }
+
+
+
+    date1.textContent = `${dateOne}`;
+}
 
 
 // Converts the input value from the user searching to a string value.
@@ -36,11 +43,11 @@ function searchFormSubmit() {
 // Fetches the weather location IE lat & Lon and is used as parameters for fetchWeather function
 function fetchCityCoords(searchCity) {
     var apiLink = `https://api.openweathermap.org/geo/1.0/direct?q=${searchCity}&limit=5&appid=eecc46db8fa2385bac54dd8f8c273033`;
-    console.log(apiLink);
     fetch(apiLink)
         .then(Response => Response.json())
         .then(data => {
             fetchWeather([data[0]]);
+            fetchForecast([data[0]]);
             console.log(data);
         })
 }
@@ -57,5 +64,18 @@ function fetchWeather (data) {
             console.log(data);
         })
 }
+
+function fetchForecast (data) {
+    var lat = data ['0']['lat'];
+    var lon = data ['0']['lon'];
+    var apiLink = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=eecc46db8fa2385bac54dd8f8c273033&units=imperial`;
+    fetch(apiLink)
+        .then(Response => Response.json())
+        .then(data => {
+            fiveDayForecastRender(data);
+            console.log(data);
+        })
+}
+
 
 searchCityForm.addEventListener('submit', searchFormSubmit)
