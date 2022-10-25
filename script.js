@@ -76,17 +76,17 @@ function fiveDayForecastRender(data) {
     temp4.textContent = `Temp: ${tempfour}°F`;
     temp5.textContent = `Temp: ${tempfive}°F`;
     // Appends the wind speed info
-    wind1.textContent = `${windone} MPH`;
-    wind2.textContent = `${windtwo} MPH`;
-    wind3.textContent = `${windthree} MPH`;
-    wind4.textContent = `${windfour} MPH`;
-    wind5.textContent = `${windfive} MPH`;
+    wind1.textContent = `Wind: ${windone} MPH`;
+    wind2.textContent = `Wind: ${windtwo} MPH`;
+    wind3.textContent = `Wind: ${windthree} MPH`;
+    wind4.textContent = `Wind: ${windfour} MPH`;
+    wind5.textContent = `Wind: ${windfive} MPH`;
     // Appends the Humidity information
-    humidity1.textContent = `${humidityone}%`;
-    humidity2.textContent = `${humiditytwo}%`;
-    humidity3.textContent = `${humiditythree}%`;
-    humidity4.textContent = `${humidityfour}%`;
-    humidity5.textContent = `${humidityfive}%`;
+    humidity1.textContent = `Humidity: ${humidityone}%`;
+    humidity2.textContent = `Humidity: ${humiditytwo}%`;
+    humidity3.textContent = `Humidity: ${humiditythree}%`;
+    humidity4.textContent = `Humidity: ${humidityfour}%`;
+    humidity5.textContent = `Humidity: ${humidityfive}%`;
 }
 
 
